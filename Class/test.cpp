@@ -1,8 +1,3 @@
-//
-// Created by 谷煜奇 on 25-5-9.
-//
-
-
 #include <iostream>
 #include <stdlib.h>
 using namespace std;
@@ -10,12 +5,11 @@ using namespace std;
 typedef int ElemType;
 
 typedef struct {
-    ElemType *base;
     ElemType *top;
+    ElemType *base;
     int stackSize;
 }SqStack;
 
-// init
 int InitStack(SqStack *s) {
     s -> base = (ElemType *)malloc(sizeof(ElemType) * MAXSIZE);
     if (!s -> base)
@@ -25,7 +19,6 @@ int InitStack(SqStack *s) {
     return 1;
 }
 
-// push
 int Push(SqStack *s, ElemType e) {
     if (s -> top - s -> base == s -> stackSize)
         return 0;
@@ -34,7 +27,6 @@ int Push(SqStack *s, ElemType e) {
     return 1;
 }
 
-// pop
 int Pop(SqStack *s, ElemType *e) {
     if (s -> top == s -> base)
         return 0;
@@ -43,14 +35,11 @@ int Pop(SqStack *s, ElemType *e) {
     return 1;
 }
 
-// empty
 int StackEmpty(SqStack s) {
     return (s.top == s.base);
 }
 
-//  转换
 void tenToK(int n, int k) {
-
     SqStack s;
     int e;
 
@@ -64,7 +53,7 @@ void tenToK(int n, int k) {
 
     while (!StackEmpty(s)) {
         Pop(&s, &e);
-        if(e < 10)
+        if (e < 10)
             cout << e;
         else
             cout << char('A' + e - 10);
@@ -79,5 +68,4 @@ int main() {
     cout << "cin k:";
     cin >> k;
     tenToK(n, k);
-    return 0;
 }
