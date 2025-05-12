@@ -6,7 +6,7 @@
 #include <iostream>
 #include <stdlib.h>
 using namespace std;
-#define MAXSIZE 100
+const int MAXSIZE = 100;
 typedef int ElemType;
 
 typedef struct {
@@ -17,7 +17,7 @@ typedef struct {
 
 // init
 int InitStack(SqStack *s) {
-    s -> base = (ElemType *)malloc(sizeof(ElemType) * MAXSIZE);
+    s -> base = new ElemType[MAXSIZE];
     if (!s -> base)
         return 0;
     s -> top = s -> base;
@@ -44,7 +44,7 @@ int Pop(SqStack *s, ElemType *e) {
 }
 
 // empty
-int StackEmpty(SqStack s) {
+int StackEmpty(const SqStack& s) {
     return (s.top == s.base);
 }
 
